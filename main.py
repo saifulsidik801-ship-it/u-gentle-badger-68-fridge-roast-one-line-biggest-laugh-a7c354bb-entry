@@ -15,6 +15,8 @@ ENTRY = (
 
 
 def main():
+    # The gate only accepts 1-200 characters: refuse to write a bad line.
+    assert 1 <= len(ENTRY) <= 200, f"entry is {len(ENTRY)} chars, must be 1-200"
     out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, "entry.txt")
